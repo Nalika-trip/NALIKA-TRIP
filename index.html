@@ -3,262 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nalika Trip - Jelajahi Keindahan Alam</title>
+    <title>Nalika Trip - Menjelajah Bersama Kami</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', /* Slate 900 */
+                            green: '#1e3f20', /* Hijau Forest */
+                            accent: '#f59e0b', /* Amber 500 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; }
-        a { text-decoration: none; color: inherit; }
-        
-        nav { background-color: #1b4332; color: white; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        nav .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a:hover { color: #52b788; }
-
-        /* REVISI: Background hero diganti ke URL Unsplash yang valid */
-        .hero { background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 48px; margin-bottom: 10px; }
-        .hero p { font-size: 20px; margin-bottom: 30px; max-width: 600px; }
-        
-        .btn { background-color: #52b788; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; transition: 0.3s; display: inline-block; }
-        .btn:hover { background-color: #40916c; }
-
-        section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        section h2 { text-align: center; font-size: 32px; color: #1b4332; margin-bottom: 40px; }
-
-        .trip-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
-        .trip-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; transition: 0.3s; }
-        .trip-card:hover { transform: translateY(-5px); }
-        .trip-img { width: 100%; height: 220px; object-fit: cover; }
-        .trip-info { padding: 20px; text-align: center; }
-        .trip-info h3 { margin-bottom: 5px; color: #1b4332; font-size: 22px; }
-        
-        /* Tambahan Style Harga di Card */
-        .trip-price { font-size: 18px; font-weight: bold; color: #40916c; margin-bottom: 10px; }
-        .trip-info p { font-size: 14px; color: #666; margin-bottom: 20px; height: 65px; overflow: hidden; }
-        
-        .gallery-section { background-color: #e9ecef; max-width: 100%; padding: 60px 50px; }
-        .gallery-grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .gallery-item { border-radius: 8px; overflow: hidden; width: 360px; height: 240px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .gallery-item img:hover { transform: scale(1.05); }
-
-        .form-section { background-color: #1b4332; color: white; max-width: 100%; padding: 60px 20px; }
-        .form-section h2 { color: white; }
-        .form-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; color: #333; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-        .form-container .btn { width: 100%; text-align: center; }
-
-        /* MODAL POPUP STYLES */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background-color: white; padding: 30px; border-radius: 10px; max-width: 600px; width: 100%; position: relative; animation: fadeIn 0.3s; }
-        .modal-img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; }
-        .close-btn:hover { color: #333; }
-        
-        /* Tambahan Detail Harga di Modal */
-        .modal-price-box { background-color: #e8f5e9; border-left: 5px solid #40916c; padding: 12px; border-radius: 4px; margin-bottom: 15px; color: #1b4332; }
-        .modal-price-box p { margin: 0; font-size: 15px; }
-        
-        .tc-box { background-color: #f8d7da; border-left: 5px solid #dc3545; padding: 15px; border-radius: 4px; margin: 15px 0; color: #721c24; text-align: left; }
-        .tc-box ul { padding-left: 20px; font-size: 14px; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        footer { background-color: #112a1f; color: #aaa; text-align: center; padding: 20px; font-size: 14px; }
-
-        @media (max-width: 768px) {
-            nav { padding: 20px; flex-direction: column; gap: 10px; }
-            nav ul { width: 100%; justify-content: center; }
-            .hero h1 { font-size: 32px; }
-            .trip-card, .gallery-item { width: 100%; }
+        /* Efek Tombol Ngambang & Membal */
+        .btn-pop {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-pop:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn-pop:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-900 text-gray-100 font-sans min-h-screen flex flex-col">
 
-    <nav>
-        <div class="logo">NALIKA TRIP</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#trip">Pilihan Trip</a></li>
-            <li><a href="#gallery">Galeri</a></li>
-            <li><a href="#daftar">Daftar</a></li>
-        </ul>
-    </nav>
-
-    <div class="hero" id="home">
-        <h1>Bosan di Rumah? Alam Menunggumu!</h1>
-        <p>Nalika Trip siap nemenin langkah kaki lu buat ngeksplor gunung-gunung kece dan keindahan alam Indonesia dengan aman, seru, dan pastinya dapet temen baru.</p>
-        <a href="#daftar" class="btn">Gas Daftar Sekarang!</a>
-    </div>
-
-    <section id="trip">
-        <h2>Pilihan Trip Populer</h2>
-        <div class="trip-container">
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" onclick="showPage('home')" class="text-xl font-extrabold tracking-wider text-amber-500">
+                NALIKA <span class="text-white">TRIP</span>
+            </a>
             
-            <!-- KAWAH RATU CARD -->
-            <div class="trip-card">
-                <img src="https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?auto=format&fit=crop&w=500&q=80" alt="Kawah Ratu" class="trip-img">
-                <div class="trip-info">
-                    <h3>Kawah Ratu</h3>
-                    <div class="trip-price">Rp 150.000 / pax</div>
-                    <p>Merasakan sensasi petualangan menyusuri sungai dan melihat aktifitas kawah vulkanik aktif yang eksotis.</p>
-                    <button class="btn" style="font-size: 14px; padding: 8px 20px;" onclick="openModal('modal-kawah')">Detail Trip & T&C</button>
-                </div>
-            </div>
+            <ul class="hidden md:flex space-x-8 font-medium">
+                <li><a href="#" onclick="showPage('home')" class="nav-link hover:text-amber-500 transition">Home</a></li>
+                <li><a href="#" onclick="showPage('about')" class="nav-link hover:text-amber-500 transition">About</a></li>
+                <li><a href="#" onclick="showPage('trip')" class="nav-link hover:text-amber-500 transition">Trip</a></li>
+                <li><a href="#" onclick="showPage('galeri')" class="nav-link hover:text-amber-500 transition">Galeri</a></li>
+            </ul>
 
-            <!-- PAPANDAYAN CARD -->
-            <div class="trip-card">
-                <img src="https://images.unsplash.com/photo-1589392682842-d550f589d852?auto=format&fit=crop&w=500&q=80" alt="Gunung Papandayan" class="trip-img">
-                <div class="trip-info">
-                    <h3>Gunung Papandayan</h3>
-                    <div class="trip-price">Rp 350.000 / pax</div>
-                    <p>Gunung ramah pemula dengan bonus komplit: padang edelweiss Tegal Alun, hutan mati yang ikonik, dan kolam air panas.</p>
-                    <button class="btn" style="font-size: 14px; padding: 8px 20px;" onclick="openModal('modal-papandayan')">Detail Trip & T&C</button>
-                </div>
-            </div>
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl focus:outline-none text-white">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </nav>
 
-            <!-- GUNUNG GEDE CARD -->
-            <div class="trip-card">
-                <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=500&q=80" alt="Gunung Gede" class="trip-img">
-                <div class="trip-info">
-                    <h3>Gunung Gede</h3>
-                    <div class="trip-price">Rp 450.000 / pax</div>
-                    <p>Uji nyali dan fisik lu di salah satu gunung paling favorit di Jawa Barat. Nikmati indahnya Suryakencana.</p>
-                    <button class="btn" style="font-size: 14px; padding: 8px 20px;" onclick="openModal('modal-gede')">Detail Trip & T&C</button>
-                </div>
-            </div>
-
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-b border-slate-700 px-4 py-4 space-y-3">
+            <a href="#" onclick="showPage('home')" class="block py-2 text-gray-300 hover:text-amber-500">Home</a>
+            <a href="#" onclick="showPage('about')" class="block py-2 text-gray-300 hover:text-amber-500">About</a>
+            <a href="#" onclick="showPage('trip')" class="block py-2 text-gray-300 hover:text-amber-500">Trip</a>
+            <a href="#" onclick="showPage('galeri')" class="block py-2 text-gray-300 hover:text-amber-500">Galeri</a>
         </div>
-    </section>
+    </header>
 
-    <!-- MODAL KAWAH RATU -->
-    <div id="modal-kawah" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-kawah')">&times;</span>
-            <img src="https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?auto=format&fit=crop&w=600&q=80" class="modal-img">
-            <h3>Kawah Ratu</h3>
-            <p style="font-size: 14px; margin-top: 5px; color:#555; margin-bottom: 15px;">Merasakan sensasi petualangan menyusuri sungai alami dan menikmati aktifitas kawah vulkanik aktif yang eksotis di kaki Gunung Salak.</p>
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
+
+        <section id="page-home" class="page-section space-y-12">
+            <div class="relative rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center text-center p-6 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80');">
+                <div class="max-w-2xl space-y-6">
+                    <h2 class="text-amber-500 tracking-widest uppercase font-semibold text-sm">Menjelajah Bersama Kami</h2>
+                    <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">Nalika Trip</h1>
+                    <p class="text-gray-300 text-base md:text-lg">
+                        Nalika Trip siap nemenin langkah kaki lu buat ngeksplor gunung-gunung kece dan keindahan alam Indonesia dengan aman, seru, dan pastinya dapet temen baru.
+                    </p>
+                    <button onclick="showPage('about')" class="btn-pop bg-amber-500 text-slate-900 font-bold px-8 py-3 rounded-full inline-block">
+                        Selengkapnya...
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-about" class="page-section hidden space-y-8">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-6">
+                    <h1 class="text-3xl md:text-4xl font-bold border-l-4 border-amber-500 pl-4">Tentang Nalika</h1>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Nalika Trip menghadirkan pengalaman wisata alam dan kegiatan edukatif yang seru, aman, dan penuh makna. Setiap perjalanan dirancang untuk menciptakan momen kebersamaan yang tak terlupakan.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        Didukung dokumentasi foto berkualitas dan video sinematik, setiap cerita akan tetap hidup bahkan setelah perjalanan berakhir.
+                    </p>
+                    <button onclick="showPage('galeri')" class="btn-pop bg-amber-500 text-slate-900 font-bold px-8 py-3 rounded-full inline-block">
+                        Lihat Galeri Foto
+                    </button>
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+                    <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=800&q=80" alt="Tentang Nalika" class="w-full h-96 object-cover">
+                </div>
+            </div>
+        </section>
+
+        <section id="page-galeri" class="page-section hidden space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-4">
+                <h1 class="text-3xl font-bold">Galeri Perjalanan</h1>
+                <p class="text-gray-400">Beberapa momen seru tim Nalika Trip menembus derasnya hujan menuju Kawah Ratu dan petualangan seru lainnya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-800 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <p class="text-xs text-amber-500 font-semibold">@NALIKATRIP</p>
+                        <p class="text-sm font-medium">Menembus derasnya hujan, Menuju Kawah Ratu.</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-800 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <p class="text-xs text-amber-500 font-semibold">@NALIKATRIP</p>
+                        <p class="text-sm font-medium">Menjelajah Hutan Mati Papandayan</p>
+                    </div>
+                </div>
+                <div class="group relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-800 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <p class="text-xs text-amber-500 font-semibold">@NALIKATRIP</p>
+                        <p class="text-sm font-medium">Sunset Indah di Gunung Gede</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-6">
+                <button onclick="showPage('trip')" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-10 py-4 rounded-full text-lg">
+                    Pilihan Trip <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="page-trip" class="page-section hidden space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-4">
+                <h1 class="text-3xl font-bold">Pilihan Trip Terpopuler</h1>
+                <p class="text-gray-400">Pilih destinasi impianmu dan rasakan petualangan mendaki bersama guide profesional kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div onclick="showPage('kawah-ratu')" class="btn-pop cursor-pointer bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 flex flex-col group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544085311-11a028465b03?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Kawah Ratu">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">One Day Trip</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white group-hover:text-amber-500 transition">Kawah Ratu</h2>
+                            <p class="text-gray-400 text-sm mt-1">Hiking seru menyusuri sungai belerang aktif di Halimun Salak.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-slate-700">
+                            <div>
+                                <p class="text-xs text-gray-500">Mulai dari</p>
+                                <p class="text-xl font-extrabold text-amber-500">130k <span class="text-xs text-gray-400">/pax</span></p>
+                            </div>
+                            <span class="text-sm font-semibold text-amber-500 flex items-center group-hover:translate-x-2 transition duration-300">
+                                Selengkapnya <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="alertGede()" class="btn-pop cursor-pointer bg-slate-800/50 rounded-3xl overflow-hidden border border-slate-800 flex flex-col group relative">
+                    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center p-4 text-center">
+                        <i class="fa-solid fa-lock text-4xl text-amber-500 mb-3"></i>
+                        <h3 class="text-xl font-bold text-white">Gunung Gede</h3>
+                        <p class="text-amber-500 text-sm font-semibold uppercase tracking-wider mt-1">Coming Soon</p>
+                    </div>
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Gunung Gede">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-500">Gunung Gede</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="showPage('papandayan')" class="btn-pop cursor-pointer bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 flex flex-col group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Gunung Papandayan">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">One Day Trip</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white group-hover:text-amber-500 transition">Papandayan</h2>
+                            <p class="text-gray-400 text-sm mt-1">Sangat ramah pemula, keindahan padang Edelweiss & Hutan Mati.</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-slate-700">
+                            <div>
+                                <p class="text-xs text-gray-500">Mulai dari</p>
+                                <p class="text-xl font-extrabold text-amber-500">280k <span class="text-xs text-gray-400">/pax</span></p>
+                            </div>
+                            <span class="text-sm font-semibold text-amber-500 flex items-center group-hover:translate-x-2 transition duration-300">
+                                Selengkapnya <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-kawah-ratu" class="page-section hidden space-y-8">
+            <button onclick="showPage('trip')" class="inline-flex items-center text-amber-500 font-semibold hover:underline">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Pilihan Trip
+            </button>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-6">
+                    <h1 class="text-3xl md:text-5xl font-black text-white">One Day Trip <br><span class="text-amber-500">Kawah Ratu via Cidahu</span></h1>
+                    
+                    <div class="bg-slate-800 p-6 rounded-2xl space-y-4 border border-slate-700">
+                        <div class="flex justify-between border-b border-slate-700 pb-3">
+                            <span class="text-gray-400">HTM</span>
+                            <span class="font-bold text-amber-500 text-lg">Rp130.000 / Pax</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-700 pb-3">
+                            <span class="text-gray-400">Jadwal Trip</span>
+                            <div class="text-right">
+                                <p class="font-medium">Weekend: 12, 19, 26</p>
+                                <p class="font-medium text-sm text-gray-400">Weekday: 13, 21, 29, 30</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-gray-400">Meeting Point</span>
+                            <span class="font-medium text-right">Indomaret Terminal Cidahu</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-semibold">Deskripsi Destinasi</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Kawah aktif sisa letusan Gunung Salak yang terakhir terjadi pada tahun 1938 . Terletak di kawasan Taman Nasional Gunung Halimun Salak (TNGHS) di perbatasan Bogor dan Sukabumi , kawah seluas 2 hektare ini menjadi destinasi hiking populer karena keunikan uap panas dan aliran air belerangnya .
+                        </p>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/628212240439?text=Halo%20Nalika%20Trip,%20saya%20mau%20register%20untuk%20Trip%20Kawah%20Ratu" target="_blank" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-10 py-4 rounded-full text-lg inline-flex items-center justify-center w-full sm:w-auto">
+                            <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Register Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-3xl border border-slate-700 space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-500 mb-3 border-b border-slate-700 pb-2"><i class="fa-solid fa-circle-check mr-2"></i> INCLUDE</h3>
+                        <ul class="grid grid-cols-2 gap-2 text-sm text-gray-300">
+                            <li>• Tiket Masuk </li>
+                            <li>• Simaksi </li>
+                            <li>• Asuransi </li>
+                            <li>• Dokumentasi </li>
+                            <li>• P3K Standar </li>
+                            <li>• Makan Siang </li>
+                            <li>• Air Mineral </li>
+                            <li>• Parkir Motor </li>
+                            <li>• Tour Guide </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-rose-500 mb-3 border-b border-slate-700 pb-2"><i class="fa-solid fa-circle-xmark mr-2"></i> EXCLUDE</h3>
+                        <ul class="grid grid-cols-2 gap-2 text-sm text-gray-300">
+                            <li>• Peralatan Pribadi </li>
+                            <li>• Obat Pribadi </li>
+                            <li>• Pakaian Ganti </li>
+                            <li>• Snack </li>
+                            <li>• Jas Hujan </li>
+                            <li>• Parkir Mobil </li>
+                            <li>• Ojek Mepo - BC </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-papandayan" class="page-section hidden space-y-8">
+            <button onclick="showPage('trip')" class="inline-flex items-center text-amber-500 font-semibold hover:underline">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Pilihan Trip
+            </button>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-6">
+                    <h1 class="text-3xl md:text-5xl font-black text-white">One Day Trip <br><span class="text-amber-500">Gunung Papandayan</span></h1>
+                    
+                    <div class="bg-slate-800 p-6 rounded-2xl space-y-4 border border-slate-700">
+                        <div class="flex justify-between border-b border-slate-700 pb-3">
+                            <span class="text-gray-400">Start From</span>
+                            <span class="font-bold text-amber-500 text-lg">Rp280.000 / Pax</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-700 pb-3">
+                            <span class="text-gray-400">Tanggal Pelaksanaan</span>
+                            <span class="font-medium text-right text-amber-500">25 - 26 Juli 2026 </span>
+                        </div>
+                        <div class="flex flex-col space-y-1">
+                            <span class="text-gray-400">Meeting Point Options:</span>
+                            <ul class="text-sm text-gray-300 pl-4 list-disc space-y-1">
+                                <li>Sukabumi - Exit Tol Parungkuda </li>
+                                <li>Bogor - Ciawi </li>
+                                <li>Jakarta - Cawang UKI </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-xl font-semibold">Deskripsi Destinasi</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Gunung Papandayan adalah gunung api aktif setinggi 2.665 mdpl di Cisurupan, Garut, Jawa Barat . Terkenal ramah untuk pemula, daya tarik utamanya meliputi Kawah Mas yang eksotis, area camping Pondok Salada, hamparan bunga edelweiss di Tegal Alun, serta lanskap dramatis Hutan Mati .
+                        </p>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/628212240439?text=Halo%20Nalika%20Trip,%20saya%20mau%20register%20untuk%20Trip%20Gunung%20Papandayan" target="_blank" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-10 py-4 rounded-full text-lg inline-flex items-center justify-center w-full sm:w-auto">
+                            <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Register Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/80 p-6 rounded-3xl border border-slate-700 space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-500 mb-3 border-b border-slate-700 pb-2"><i class="fa-solid fa-circle-check mr-2"></i> INCLUDE</h3>
+                        <ul class="grid grid-cols-2 gap-2 text-sm text-gray-300">
+                            <li>• Transportasi PP </li>
+                            <li>• Tiket / Simaksi </li>
+                            <li>• Rumah Singgah </li>
+                            <li>• Makan 1x </li>
+                            <li>• Minuman </li>
+                            <li>• Dokumentasi </li>
+                            <li>• P3K Standar </li>
+                            <li>• Tour Guide </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-rose-500 mb-3 border-b border-slate-700 pb-2"><i class="fa-solid fa-circle-xmark mr-2"></i> EXCLUDE</h3>
+                        <ul class="grid grid-cols-2 gap-2 text-sm text-gray-300">
+                            <li>• Obat Pribadi </li>
+                            <li>• Surat Sehat </li>
+                            <li>• Peralatan Pribadi </li>
+                            <li>• Baju Ganti </li>
+                            <li>• Snack / Makanan Tambahan </li>
+                            <li>• Minum Pribadi </li>
+                            <li>• Jas Hujan </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-800 mt-12 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <p class="text-lg font-bold text-amber-500">NALIKA TRIP</p>
+                <p class="text-xs text-gray-500 mt-1">© 2026 Nalika Trip. All Rights Reserved.</p>
+            </div>
             
-            <div class="modal-price-box">
-                <p><strong>Harga Paket:</strong> Rp 150.000 / Orang</p>
-                <p style="font-size: 13px; color: #555;">*DP Minimal: Rp 50.000 untuk *booking* slot.</p>
+            <div class="flex space-x-6">
+                <a href="https://wa.me/628212240439" target="_blank" class="btn-pop text-gray-400 hover:text-emerald-500 text-3xl transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/nalikatrip?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-pop text-gray-400 hover:text-pink-500 text-3xl transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nalika.trip?is_from_webapp=1&sender_device=pc" target="_blank" class="btn-pop text-gray-400 hover:text-white text-3xl transition">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
             </div>
-
-            <div class="tc-box">
-                <h4>Syarat & Ketentuan:</h4>
-                <ul>
-                    <li>Peserta dalam kondisi sehat jasmani & rohani.</li>
-                    <li>Wajib menggunakan sepatu trekking atau sandal gunung yang tidak licin.</li>
-                    <li>Membawa jas hujan pribadi dan baju ganti cadangan.</li>
-                    <li>Dilarang merusak ekosistem atau membuang sampah sembarangan.</li>
-                </ul>
-            </div>
-            <button class="btn" style="width:100%" onclick="closeModal('modal-kawah'); window.location.hash='#daftar';">Gas Daftar Trip Ini!</button>
         </div>
-    </div>
-
-    <!-- MODAL PAPANDAYAN -->
-    <div id="modal-papandayan" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-papandayan')">&times;</span>
-            <img src="https://images.unsplash.com/photo-1589392682842-d550f589d852?auto=format&fit=crop&w=600&q=80" class="modal-img">
-            <h3>Gunung Papandayan</h3>
-            <p style="font-size: 14px; margin-top: 5px; color:#555; margin-bottom: 15px;">Gunung ramah pemula dengan bonus keindahan terlengkap! Menikmati padang edelweiss Tegal Alun yang mistis dan Hutan Mati.</p>
-            
-            <div class="modal-price-box">
-                <p><strong>Harga Paket:</strong> Rp 350.000 / Orang</p>
-                <p style="font-size: 13px; color: #555;">*DP Minimal: Rp 150.000 untuk kepastian kuota armada.</p>
-            </div>
-
-            <div class="tc-box">
-                <h4>Syarat & Ketentuan:</h4>
-                <ul>
-                    <li>Terbuka untuk pemula, olahraga ringan sangat dianjurkan.</li>
-                    <li>Wajib membawa jaket tebal karena suhu Hutan Mati bisa sangat dingin.</li>
-                    <li>Dilarang keras memetik bunga Edelweiss dalam alasan apapun!</li>
-                    <li>DP yang sudah dibayarkan tidak hangus, melainkan bisa diganti orang.</li>
-                </ul>
-            </div>
-            <button class="btn" style="width:100%" onclick="closeModal('modal-papandayan'); window.location.hash='#daftar';">Gas Daftar Trip Ini!</button>
-        </div>
-    </div>
-
-    <!-- MODAL GUNUNG GEDE -->
-    <div id="modal-gede" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('modal-gede')">&times;</span>
-            <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=600&q=80" class="modal-img">
-            <h3>Gunung Gede</h3>
-            <p style="font-size: 14px; margin-top: 5px; color:#555; margin-bottom: 15px;">Uji nyali dan ketahanan fisik lu di salah satu gunung legendaris paling favorit. Nikmati indahnya hamparan alun-alun Suryakencana.</p>
-            
-            <div class="modal-price-box">
-                <p><strong>Harga Paket:</strong> Rp 450.000 / Orang</p>
-                <p style="font-size: 13px; color: #555;">*DP Minimal: Rp 200.000 (untuk proses e-Simaksi TNP decentral).</p>
-            </div>
-
-            <div class="tc-box">
-                <h4>Syarat & Ketentuan:</h4>
-                <ul>
-                    <li>Kuota sangat terbatas disesuaikan dengan e-Simaksi Taman Nasional.</li>
-                    <li>Wajib menyertakan Surat Keterangan Sehat H-3 sebelum berangkat.</li>
-                    <li>Membawa perlengkapan camp standar sesuai instruksi grup.</li>
-                    <li>Pembatalan H-7 trip, uang hangus kecuali ada pengganti peserta.</li>
-                </ul>
-            </div>
-            <button class="btn" style="width:100%" onclick="closeModal('modal-gede'); window.location.hash='#daftar';">Gas Daftar Trip Ini!</button>
-        </div>
-    </div>
-
-    <div class="gallery-section" id="gallery">
-        <h2>Galeri Dokumentasi Nalika Trip</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=400&q=80" alt="Gallery 1"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=400&q=80" alt="Gallery 2"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&q=80" alt="Gallery 3"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Gallery 4"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=400&q=80" alt="Gallery 5"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80" alt="Gallery 6"></div>
-        </div>
-    </div>
-
-    <section id="daftar" class="form-section">
-        <h2>Formulir Pendaftaran Trip</h2>
-        <div class="form-container">
-            <form action="#" method="POST" onsubmit="alert('Data pendaftaran lu udah masuk! Admin Nalika Trip bakal hubungin via WhatsApp.'); return false;">
-                <div class="form-group">
-                    <label for="nama">Nama Lengkap</label>
-                    <input type="text" id="nama" placeholder="Masukkan nama lu" required>
-                </div>
-                <div class="form-group">
-                    <label for="whatsapp">Nomor WhatsApp</label>
-                    <input type="tel" id="whatsapp" placeholder="Contoh: 08123456789" required>
-                </div>
-                <div class="form-group">
-                    <label for="pilihan-trip">Pilih Destinasi</label>
-                    <select id="pilihan-trip" required>
-                        <option value="">-- Pilih Trip Lu --</option>
-                        <option value="kawah-ratu">Kawah Ratu - Rp 150.000</option>
-                        <option value="papandayan">Gunung Papandayan - Rp 350.000</option>
-                        <option value="gede">Gunung Gede - Rp 450.000</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn">Kirim Pendaftaran</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Nalika Trip. All Rights Reserved. Made with ❤️ buat petualang sejati.</p>
     </footer>
 
     <script>
-        function openModal(id) { document.getElementById(id).style.display = "flex"; }
-        function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) { event.target.style.display = "none"; }
+        // Fungsi pindah halaman (SPA)
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+
+            // Tampilkan halaman target
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                // Scroll ke atas halaman otomatis
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Tutup menu mobile otomatis setelah klik link
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.add('hidden');
+            document.getElementById('menu-icon').className = 'fa-solid fa-bars';
+        }
+
+        // Toggle menu bar di HP
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = 'fa-solid fa-xmark';
+            } else {
+                menu.classList.add('hidden');
+                icon.className = 'fa-solid fa-bars';
+            }
+        }
+
+        // Alert khusus buat Gunung Gede (Belum Tersedia)
+        function alertGede() {
+            alert("Trip Gunung Gede Belum Tersedia saat ini ya, Cuy! Pantengin terus update selanjutnya di sosmed Nalika Trip!");
         }
     </script>
 </body>
