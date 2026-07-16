@@ -31,11 +31,6 @@ const NALIKA_DATABASE = {
             caption: 
             image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
         }
-        {
-            tag: 
-            caption: 
-            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
-        }
     ],
 
     // Detail Pilihan Trip
