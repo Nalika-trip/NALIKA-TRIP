@@ -16,22 +16,10 @@ const NALIKA_DATABASE = {
 
     // Foto Galeri
     gallery: [
-        {
-            tag: 
-            caption: 
-            image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80"
-        },
-        {
-            tag: 
-            caption: 
-            image: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?auto=format&fit=crop&w=600&q=80"
-        },
-        {
-            tag: 
-            caption: 
-            image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"
-        }
-    ],
+        {image: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=600&q=80"},
+        {image: "https://images.unsplash.com/photo-1486915309851-b0cc1f8a0084?auto=format&fit=crop&w=600&q=80"},
+        {image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80"}
+    ]
 
     // Detail Pilihan Trip
     trips: {
