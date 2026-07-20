@@ -27,7 +27,7 @@ function toggleMobileMenu() {
 }
 
 function alertGede() {
-    alert("Trip Gunung Gede Belum Tersedia saat ini ya, Bapee! Pantengin terus update selanjutnya di sosmed Nalika Trip!");
+    alert("Trip Gunung Gede Belum Tersedia saat ini ya, Pantengin terus update selanjutnya di sosmed Nalika Trip!");
 }
 
 // Fungsi Lightbox Popup Foto Fullscreen
