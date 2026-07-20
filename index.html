@@ -11,10 +11,10 @@
     <!-- Font Awesome untuk Ikon Sosmed -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-900 text-gray-100 font-sans min-h-screen flex flex-col">
+<body class="bg-emerald-950 text-emerald-100 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-emerald-950">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <header class="sticky top-0 z-50 bg-emerald-950/90 backdrop-blur-md border-b border-emerald-800/50">
         <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" onclick="showPage('home')" class="text-xl font-extrabold tracking-wider text-amber-500">
                 NALIKA <span class="text-white">TRIP</span>
@@ -29,11 +29,11 @@
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-b border-slate-700 px-4 py-4 space-y-3">
-            <a href="#" onclick="showPage('home')" class="block py-2 text-gray-300 hover:text-amber-500">Home</a>
-            <a href="#" onclick="showPage('about')" class="block py-2 text-gray-300 hover:text-amber-500">About</a>
-            <a href="#" onclick="showPage('trip')" class="block py-2 text-gray-300 hover:text-amber-500">Trip</a>
-            <a href="#" onclick="showPage('galeri')" class="block py-2 text-gray-300 hover:text-amber-500">Galeri</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-900 border-b border-emerald-800 px-4 py-4 space-y-3">
+            <a href="#" onclick="showPage('home')" class="block py-2 text-emerald-100 hover:text-amber-500">Home</a>
+            <a href="#" onclick="showPage('about')" class="block py-2 text-emerald-100 hover:text-amber-500">About</a>
+            <a href="#" onclick="showPage('trip')" class="block py-2 text-emerald-100 hover:text-amber-500">Trip</a>
+            <a href="#" onclick="showPage('galeri')" class="block py-2 text-emerald-100 hover:text-amber-500">Galeri</a>
         </div>
     </header>
 
@@ -42,14 +42,14 @@
 
         <!-- ================= PAGE: HOME ================= -->
         <section id="page-home" class="page-section space-y-12">
-            <div class="relative rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center text-center p-6 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.8)), url('images/1.jpg');">
+            <div class="relative rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center text-center p-6 bg-cover bg-center border border-emerald-800/40 shadow-2xl" style="background-image: linear-gradient(rgba(2, 44, 34, 0.75), rgba(6, 78, 59, 0.85)), url('images/1.jpg');">
                 <div class="max-w-2xl space-y-6">
-                    <h2 class="text-amber-500 tracking-widest uppercase font-semibold text-sm">Menjelajah Bersama Kami</h2>
+                    <h2 class="text-amber-400 tracking-widest uppercase font-semibold text-sm">Menjelajah Bersama Kami</h2>
                     <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">Nalika Trip</h1>
-                    <p class="text-gray-300 text-base md:text-lg">
+                    <p class="text-emerald-100/90 text-base md:text-lg">
                         Nalika Trip siap nemenin langkah kaki lu buat ngeksplor gunung-gunung kece dan keindahan alam Indonesia dengan aman, seru, dan pastinya dapet temen baru.
                     </p>
-                    <button onclick="showPage('about')" class="btn-pop bg-amber-500 text-slate-900 font-bold px-8 py-3 rounded-full inline-block">
+                    <button onclick="showPage('about')" class="btn-pop inline-block">
                         Selengkapnya...
                     </button>
                 </div>
@@ -60,14 +60,14 @@
         <section id="page-about" class="page-section hidden space-y-8">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-6">
-                    <h1 id="about-title" class="text-3xl md:text-4xl font-bold border-l-4 border-amber-500 pl-4"></h1>
-                    <p id="about-desc1" class="text-gray-300 leading-relaxed text-lg"></p>
-                    <p id="about-desc2" class="text-gray-300 leading-relaxed text-lg"></p>
-                    <button onclick="showPage('galeri')" class="btn-pop bg-amber-500 text-slate-900 font-bold px-8 py-3 rounded-full inline-block">
+                    <h1 id="about-title" class="text-3xl md:text-4xl font-bold border-l-4 border-amber-500 pl-4 text-white"></h1>
+                    <p id="about-desc1" class="text-emerald-100/80 leading-relaxed text-lg"></p>
+                    <p id="about-desc2" class="text-emerald-100/80 leading-relaxed text-lg"></p>
+                    <button onclick="showPage('galeri')" class="btn-pop inline-block">
                         Lihat Galeri Foto
                     </button>
                 </div>
-                <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+                <div class="rounded-2xl overflow-hidden shadow-2xl border border-emerald-800/60">
                     <img id="about-img" src="" alt="Tentang Nalika" class="w-full h-96 object-cover">
                 </div>
             </div>
@@ -76,12 +76,12 @@
         <!-- ================= PAGE: GALERI ================= -->
         <section id="page-galeri" class="page-section hidden space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-4">
-                <h1 class="text-3xl font-bold">Galeri</h1>
-                <p class="text-gray-400">Beberapa momen seru tim Nalika Trip berpetualang.</p>
+                <h1 class="text-3xl font-bold text-white">Galeri</h1>
+                <p class="text-emerald-200/70">Beberapa momen seru tim Nalika Trip berpetualang.</p>
             </div>
             <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
             <div class="text-center pt-6">
-                <button onclick="showPage('trip')" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-10 py-4 rounded-full text-lg">
+                <button onclick="showPage('trip')" class="btn-pop text-lg px-10 py-4">
                     Pilihan Trip <i class="fa-solid fa-arrow-right ml-2"></i>
                 </button>
             </div>
@@ -90,23 +90,23 @@
         <!-- ================= PAGE: PILIHAN TRIP ================= -->
         <section id="page-trip" class="page-section hidden space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-4">
-                <h1 class="text-3xl font-bold">Pilihan Trip</h1>
-                <p class="text-gray-400">Pilih destinasi impianmu dan rasakan petualangan mendaki bersama kami.</p>
+                <h1 class="text-3xl font-bold text-white">Pilihan Trip</h1>
+                <p class="text-emerald-200/70">Pilih destinasi impianmu dan rasakan petualangan mendaki bersama kami.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Trip 1: Kawah Ratu -->
-                <div onclick="showPage('kawah-ratu')" class="btn-pop cursor-pointer bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 flex flex-col group">
+                <div onclick="showPage('kawah-ratu')" class="btn-card cursor-pointer bg-emerald-900/40 rounded-3xl overflow-hidden border border-emerald-800/60 flex flex-col group hover:border-emerald-600 transition">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="images/1.jpg" class="w-full h-full object-cover" alt="Kawah Ratu">
+                        <img src="images/1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Kawah Ratu">
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
-                        <h2 class="text-2xl font-bold">Kawah Ratu</h2>
-                        <span class="text-amber-500 text-sm font-semibold mt-4 block">Baca Selengkapnya →</span>
+                        <h2 class="text-2xl font-bold text-white">Kawah Ratu</h2>
+                        <span class="text-amber-400 text-sm font-semibold mt-4 block">Baca Selengkapnya →</span>
                     </div>
                 </div>
                 <!-- Trip 2: Gunung Gede -->
-                <div onclick="alertGede()" class="btn-pop cursor-pointer bg-slate-800/50 rounded-3xl overflow-hidden border border-slate-800 flex flex-col group relative">
-                    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center text-center">
+                <div onclick="alertGede()" class="cursor-pointer bg-emerald-950/60 rounded-3xl overflow-hidden border border-emerald-900 flex flex-col group relative">
+                    <div class="absolute inset-0 bg-emerald-950/85 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center text-center">
                         <i class="fa-solid fa-lock text-3xl text-amber-500 mb-2"></i>
                         <h3 class="text-xl font-bold text-white">Gunung Gede</h3>
                         <p class="text-amber-500 text-xs font-semibold uppercase mt-1">Coming Soon</p>
@@ -114,13 +114,13 @@
                     <div class="h-64 overflow-hidden"><img src="images/3.jpg" class="w-full h-full object-cover" alt="Gunung Gede"></div>
                 </div>
                 <!-- Trip 3: Gunung Papandayan -->
-                <div onclick="showPage('papandayan')" class="btn-pop cursor-pointer bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 flex flex-col group">
+                <div onclick="showPage('papandayan')" class="btn-card cursor-pointer bg-emerald-900/40 rounded-3xl overflow-hidden border border-emerald-800/60 flex flex-col group hover:border-emerald-600 transition">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="images/2.jpg" class="w-full h-full object-cover" alt="Papandayan">
+                        <img src="images/2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Papandayan">
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
-                        <h2 class="text-2xl font-bold">Papandayan</h2>
-                        <span class="text-amber-500 text-sm font-semibold mt-4 block">Baca Selengkapnya →</span>
+                        <h2 class="text-2xl font-bold text-white">Papandayan</h2>
+                        <span class="text-amber-400 text-sm font-semibold mt-4 block">Baca Selengkapnya →</span>
                     </div>
                 </div>
             </div>
@@ -128,42 +128,42 @@
 
         <!-- ================= PAGE: DETAIL KAWAH RATU ================= -->
         <section id="page-kawah-ratu" class="page-section hidden space-y-8">
-            <button onclick="showPage('trip')" class="text-amber-500 font-semibold"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+            <button onclick="showPage('trip')" class="text-amber-400 font-semibold hover:underline"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                     <h1 id="kr-title" class="text-3xl md:text-5xl font-black text-white"></h1>
-                    <div class="bg-slate-800 p-6 rounded-2xl space-y-3">
-                        <p><strong>HTM:</strong> <span id="kr-price" class="text-amber-500"></span></p>
+                    <div class="bg-emerald-900/50 border border-emerald-800/50 p-6 rounded-2xl space-y-3">
+                        <p><strong>HTM:</strong> <span id="kr-price" class="text-amber-400 font-semibold"></span></p>
                         <p><strong>Jadwal:</strong> <span id="kr-schedule"></span></p>
                         <p><strong>Mepo:</strong> <span id="kr-mepo"></span></p>
                     </div>
-                    <p id="kr-desc" class="text-gray-300"></p>
-                    <a id="kr-btn" href="#" target="_blank" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-8 py-3 rounded-full inline-block"><i class="fa-brands fa-whatsapp"></i> Register Now</a>
+                    <p id="kr-desc" class="text-emerald-100/80"></p>
+                    <a id="kr-btn" href="#" target="_blank" class="btn-pop inline-block"><i class="fa-brands fa-whatsapp"></i> Register Now</a>
                 </div>
-                <div class="bg-slate-800/80 p-6 rounded-3xl space-y-6 border border-slate-700">
-                    <div><h3 class="text-emerald-500 font-bold mb-2">INCLUDE</h3><ul id="kr-include" class="grid grid-cols-2 gap-1 text-sm text-gray-300"></ul></div>
-                    <div><h3 class="text-rose-500 font-bold mb-2">EXCLUDE</h3><ul id="kr-exclude" class="grid grid-cols-2 gap-1 text-sm text-gray-300"></ul></div>
+                <div class="bg-emerald-900/40 p-6 rounded-3xl space-y-6 border border-emerald-800/60">
+                    <div><h3 class="text-emerald-400 font-bold mb-2">INCLUDE</h3><ul id="kr-include" class="grid grid-cols-2 gap-1 text-sm text-emerald-100/80"></ul></div>
+                    <div><h3 class="text-rose-400 font-bold mb-2">EXCLUDE</h3><ul id="kr-exclude" class="grid grid-cols-2 gap-1 text-sm text-emerald-100/80"></ul></div>
                 </div>
             </div>
         </section>
 
         <!-- ================= PAGE: DETAIL PAPANDAYAN ================= -->
         <section id="page-papandayan" class="page-section hidden space-y-8">
-            <button onclick="showPage('trip')" class="text-amber-500 font-semibold"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
+            <button onclick="showPage('trip')" class="text-amber-400 font-semibold hover:underline"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                     <h1 id="pp-title" class="text-3xl md:text-5xl font-black text-white"></h1>
-                    <div class="bg-slate-800 p-6 rounded-2xl space-y-3">
-                        <p><strong>Start From:</strong> <span id="pp-price" class="text-amber-500"></span></p>
+                    <div class="bg-emerald-900/50 border border-emerald-800/50 p-6 rounded-2xl space-y-3">
+                        <p><strong>Start From:</strong> <span id="pp-price" class="text-amber-400 font-semibold"></span></p>
                         <p><strong>Tanggal:</strong> <span id="pp-schedule"></span></p>
                         <p><strong>Mepo:</strong> <span id="pp-mepo"></span></p>
                     </div>
-                    <p id="pp-desc" class="text-gray-300"></p>
-                    <a id="pp-btn" href="#" target="_blank" class="btn-pop bg-amber-500 text-slate-900 font-extrabold px-8 py-3 rounded-full inline-block"><i class="fa-brands fa-whatsapp"></i> Register Now</a>
+                    <p id="pp-desc" class="text-emerald-100/80"></p>
+                    <a id="pp-btn" href="#" target="_blank" class="btn-pop inline-block"><i class="fa-brands fa-whatsapp"></i> Register Now</a>
                 </div>
-                <div class="bg-slate-800/80 p-6 rounded-3xl space-y-6 border border-slate-700">
-                    <div><h3 class="text-emerald-500 font-bold mb-2">INCLUDE</h3><ul id="pp-include" class="grid grid-cols-2 gap-1 text-sm text-gray-300"></ul></div>
-                    <div><h3 class="text-rose-500 font-bold mb-2">EXCLUDE</h3><ul id="pp-exclude" class="grid grid-cols-2 gap-1 text-sm text-gray-300"></ul></div>
+                <div class="bg-emerald-900/40 p-6 rounded-3xl space-y-6 border border-emerald-800/60">
+                    <div><h3 class="text-emerald-400 font-bold mb-2">INCLUDE</h3><ul id="pp-include" class="grid grid-cols-2 gap-1 text-sm text-emerald-100/80"></ul></div>
+                    <div><h3 class="text-rose-400 font-bold mb-2">EXCLUDE</h3><ul id="pp-exclude" class="grid grid-cols-2 gap-1 text-sm text-emerald-100/80"></ul></div>
                 </div>
             </div>
         </section>
@@ -171,14 +171,14 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-950 border-t border-slate-800 mt-12 py-6">
+    <footer class="bg-emerald-950 border-t border-emerald-900 mt-12 py-6">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm font-bold text-amber-500">NALIKA TRIP</p>
-            <p class="text-sm text-amber-400">Erfan Rahmadi</p>
+            <p class="text-sm text-emerald-300">Erfan Rahmadi</p>
             <div class="flex space-x-6">
-                <a href="#" target="_blank" class="footer-social-link btn-pop text-gray-400 hover:text-emerald-500 text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#" target="_blank" class="footer-social-link btn-pop text-gray-400 hover:text-pink-500 text-2xl"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" target="_blank" class="footer-social-link btn-pop text-gray-400 hover:text-white text-2xl"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" target="_blank" class="text-emerald-300 hover:text-emerald-400 text-2xl transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" target="_blank" class="text-emerald-300 hover:text-pink-400 text-2xl transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" target="_blank" class="text-emerald-300 hover:text-white text-2xl transition"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
     </footer>
