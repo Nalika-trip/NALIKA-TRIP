@@ -16,14 +16,14 @@ const NALIKA_DATABASE = {
 
     // Foto Galeri (8 foto dari folder images)
     gallery: [
-        { image: "galeri 1.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 2.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 3.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 4.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 5.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 6.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 7.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
-        { image: "galeri 8.jpg", tag: "Nalika Trip", caption: "Dokumentasi 1" },
+        { image: "galeri 1.jpg" },
+        { image: "galeri 2.jpg" },
+        { image: "galeri 3.jpg" },
+        { image: "galeri 4.jpg" },
+        { image: "galeri 5.jpg" },
+        { image: "galeri 6.jpg" },
+        { image: "galeri 7.jpg" },
+        { image: "galeri 8.jpg" },
     ],
 
     // Detail Pilihan Trip
