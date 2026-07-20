@@ -1,8 +1,8 @@
-/* Efek Tombol Interaktif Ngambang & Membal (Emerald Elegance) */
+/* Efek Tombol Interaktif Utama (Solid Amber Gold) */
 .btn-pop {
-    background-color: #f59e0b; /* Accent Warna Amber Gold */
-    color: #022c22; /* Teks Hijau Gelap */
-    border: none;
+    background-color: #f59e0b;
+    color: #022c22;
+    border: 2px solid #f59e0b;
     border-radius: 9999px;
     padding: 12px 28px;
     font-weight: 800;
@@ -13,12 +13,36 @@
 .btn-pop:hover {
     transform: translateY(-4px) scale(1.03);
     background-color: #fbbf24;
-    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35); /* Glow Efek Emas */
+    border-color: #fbbf24;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
 }
 
 .btn-pop:active {
     transform: translateY(1px) scale(0.97);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Tombol Outline (Bordiran Amber) untuk Pilihan Trip di Halaman About */
+.btn-pop-outline {
+    background-color: transparent;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+    border-radius: 9999px;
+    padding: 12px 28px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-pop-outline:hover {
+    transform: translateY(-4px) scale(1.03);
+    background-color: #f59e0b;
+    color: #022c22;
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+}
+
+.btn-pop-outline:active {
+    transform: translateY(1px) scale(0.97);
 }
 
 /* Custom Hover Effects untuk Kartu Trip */
@@ -36,12 +60,12 @@
     width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #022c22; /* Deep Forest Dark Green */
+    background: #022c22;
 }
 ::-webkit-scrollbar-thumb {
-    background: #065f46; /* Hijau Lumut / Forest Medium */
+    background: #065f46;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #10b981; /* Emerald Terang saat di-hover */
+    background: #10b981;
 }
