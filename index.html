@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nalika Trip - Menjelajah Bersama Kami</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Hubungkan ke Style CSS Kustom -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome untuk Ikon Sosmed -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-emerald-950 text-emerald-100 font-sans min-h-screen flex flex-col selection:bg-amber-500 selection:text-emerald-950">
 
-    <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-50 bg-emerald-950/90 backdrop-blur-md border-b border-emerald-800/50">
         <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" onclick="showPage('home')" class="text-xl font-extrabold tracking-wider text-amber-500">
@@ -37,12 +33,10 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINERS -->
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
 
-        <!-- ================= PAGE: HOME ================= -->
         <section id="page-home" class="page-section space-y-12">
-            <div class="relative rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center text-center p-6 bg-cover bg-center border border-emerald-800/40 shadow-2xl" style="background-image: linear-gradient(rgba(2, 44, 34, 0.75), rgba(6, 78, 59, 0.85)), url('images/1.jpg');">
+            <div class="relative rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center text-center p-6 bg-cover bg-center border border-emerald-800/40 shadow-2xl" style="background-image: linear-gradient(rgba(2, 44, 34, 0.75), rgba(6, 78, 59, 0.85)), url('images/galeri 1 .jpg');">
                 <div class="max-w-2xl space-y-6">
                     <h2 class="text-amber-400 tracking-widest uppercase font-semibold text-sm">Menjelajah Bersama Kami</h2>
                     <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">Nalika Trip</h1>
@@ -56,7 +50,6 @@
             </div>
         </section>
 
-        <!-- ================= PAGE: ABOUT ================= -->
         <section id="page-about" class="page-section hidden space-y-8">
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-6">
@@ -68,18 +61,44 @@
                     </button>
                 </div>
                 <div class="rounded-2xl overflow-hidden shadow-2xl border border-emerald-800/60">
-                    <img id="about-img" src="" alt="Tentang Nalika" class="w-full h-96 object-cover">
+                    <img id="about-img" src="images/galeri 2.jpg" alt="Tentang Nalika" class="w-full h-96 object-cover">
                 </div>
             </div>
         </section>
 
-        <!-- ================= PAGE: GALERI ================= -->
         <section id="page-galeri" class="page-section hidden space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-4">
                 <h1 class="text-3xl font-bold text-white">Galeri</h1>
                 <p class="text-emerald-200/70">Beberapa momen seru tim Nalika Trip berpetualang.</p>
             </div>
-            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 1.jpg" alt="Galeri 1" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 2.jpg" alt="Galeri 2" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 3.jpg" alt="Galeri 3" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 4.jpg" alt="Galeri 4" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 5.jpg" alt="Galeri 5" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 6.jpg" alt="Galeri 6" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 7.jpg" alt="Galeri 7" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+                <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
+                    <img src="images/galeri 8.jpg" alt="Galeri 8" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+                </div>
+            </div>
+
             <div class="text-center pt-6">
                 <button onclick="showPage('trip')" class="btn-pop text-lg px-10 py-4">
                     Pilihan Trip <i class="fa-solid fa-arrow-right ml-2"></i>
@@ -87,36 +106,32 @@
             </div>
         </section>
 
-        <!-- ================= PAGE: PILIHAN TRIP ================= -->
         <section id="page-trip" class="page-section hidden space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-4">
                 <h1 class="text-3xl font-bold text-white">Pilihan Trip</h1>
                 <p class="text-emerald-200/70">Pilih destinasi impianmu dan rasakan petualangan mendaki bersama kami.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Trip 1: Kawah Ratu -->
                 <div onclick="showPage('kawah-ratu')" class="btn-card cursor-pointer bg-emerald-900/40 rounded-3xl overflow-hidden border border-emerald-800/60 flex flex-col group hover:border-emerald-600 transition">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="images/1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Kawah Ratu">
+                        <img src="images/galeri 1 .jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Kawah Ratu">
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <h2 class="text-2xl font-bold text-white">Kawah Ratu</h2>
                         <span class="text-amber-400 text-sm font-semibold mt-4 block">Baca Selengkapnya →</span>
                     </div>
                 </div>
-                <!-- Trip 2: Gunung Gede -->
                 <div onclick="alertGede()" class="cursor-pointer bg-emerald-950/60 rounded-3xl overflow-hidden border border-emerald-900 flex flex-col group relative">
                     <div class="absolute inset-0 bg-emerald-950/85 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center text-center">
                         <i class="fa-solid fa-lock text-3xl text-amber-500 mb-2"></i>
                         <h3 class="text-xl font-bold text-white">Gunung Gede</h3>
                         <p class="text-amber-500 text-xs font-semibold uppercase mt-1">Coming Soon</p>
                     </div>
-                    <div class="h-64 overflow-hidden"><img src="images/3.jpg" class="w-full h-full object-cover" alt="Gunung Gede"></div>
+                    <div class="h-64 overflow-hidden"><img src="images/galeri 3.jpg" class="w-full h-full object-cover" alt="Gunung Gede"></div>
                 </div>
-                <!-- Trip 3: Gunung Papandayan -->
                 <div onclick="showPage('papandayan')" class="btn-card cursor-pointer bg-emerald-900/40 rounded-3xl overflow-hidden border border-emerald-800/60 flex flex-col group hover:border-emerald-600 transition">
                     <div class="h-64 overflow-hidden relative">
-                        <img src="images/2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Papandayan">
+                        <img src="images/galeri 2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="Papandayan">
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <h2 class="text-2xl font-bold text-white">Papandayan</h2>
@@ -126,7 +141,6 @@
             </div>
         </section>
 
-        <!-- ================= PAGE: DETAIL KAWAH RATU ================= -->
         <section id="page-kawah-ratu" class="page-section hidden space-y-8">
             <button onclick="showPage('trip')" class="text-amber-400 font-semibold hover:underline"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
             <div class="grid md:grid-cols-2 gap-8">
@@ -147,7 +161,6 @@
             </div>
         </section>
 
-        <!-- ================= PAGE: DETAIL PAPANDAYAN ================= -->
         <section id="page-papandayan" class="page-section hidden space-y-8">
             <button onclick="showPage('trip')" class="text-amber-400 font-semibold hover:underline"><i class="fa-solid fa-arrow-left"></i> Kembali</button>
             <div class="grid md:grid-cols-2 gap-8">
@@ -170,7 +183,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-emerald-950 border-t border-emerald-900 mt-12 py-6">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-sm font-bold text-amber-500">NALIKA TRIP</p>
@@ -183,7 +195,6 @@
         </div>
     </footer>
 
-    <!-- Script External -->
     <script src="database.js"></script>
     <script src="script.js"></script>
 </body>
