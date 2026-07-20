@@ -30,7 +30,34 @@ function alertGede() {
     alert("Trip Gunung Gede Belum Tersedia saat ini ya, Bapee! Pantengin terus update selanjutnya di sosmed Nalika Trip!");
 }
 
+// Fungsi Lightbox Popup Foto Fullscreen
+function openLightbox(imageSrc) {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    if (modal && modalImg) {
+        modalImg.src = imageSrc;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    const modal = document.getElementById('image-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    // Event Tutup Modal kalau diklik di luar foto
+    const modal = document.getElementById('image-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeLightbox();
+        });
+    }
+
     // 1. Social Links
     const footLinks = document.querySelectorAll(".footer-social-link");
     if (footLinks.length >= 3 && typeof NALIKA_DATABASE !== 'undefined') {
@@ -47,12 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("about-img").src = NALIKA_DATABASE.about.image;
     }
 
-    // 3. Gallery Grid
+    // 3. Gallery Grid + Click Lightbox
     const galleryContainer = document.getElementById("gallery-grid");
     if (galleryContainer && typeof NALIKA_DATABASE !== 'undefined' && NALIKA_DATABASE.gallery) {
         galleryContainer.innerHTML = NALIKA_DATABASE.gallery.map(item => `
-            <div class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60">
-                <img src="${item.image}" alt="Galeri Nalika Trip" class="w-full h-full object-cover hover:scale-110 transition duration-500">
+            <div onclick="openLightbox('${item.image}')" class="rounded-2xl overflow-hidden shadow-lg border border-emerald-800/40 h-48 md:h-60 cursor-pointer group">
+                <img src="${item.image}" alt="Galeri Nalika Trip" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
             </div>
         `).join('');
     }
