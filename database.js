@@ -16,7 +16,9 @@ const NALIKA_DATABASE = {
 
     // Foto Galeri
     gallery: [
-        { image: "images/galeri-1.jpg" },
+        { image: "images/galeri-16.jpg" },
+        { image: "images/galeri-17.jpg" },
+        { image: "images/galeri-18.jpg" },
         { image: "images/galeri-2.jpg" },
         { image: "images/galeri-3.jpg" },
         { image: "images/galeri-4.jpg" },
@@ -41,7 +43,7 @@ const NALIKA_DATABASE = {
             meetingPoint: "Indomaret Terminal Cidahu",
             schedule: "Weekend|Weekday",
             desc: "Kawah aktif sisa letusan Gunung Salak yang terakhir terjadi pada tahun 1938. Terletak di kawasan Taman Nasional Gunung Halimun Salak (TNGHS) di perbatasan Bogor dan Sukabumi, kawah seluas 2 hektare ini menjadi destinasi hiking populer karena keunikan uap panas dan aliran air belerangnya.",
-            image: "images/galeri-5.jpg",
+            image: "images/galeri-18.jpg",
             waLink: "https://wa.me/628212240439?text=Halo%20Nalika%20Trip,%20saya%20mau%20register%20untuk%20Trip%20Kawah%20Ratu",
             includes: ["Tiket Masuk", "Simaksi", "Asuransi", "Dokumentasi", "P3K Standar", "Makan Siang", "Air Mineral", "Parkir Motor", "Tour Guide"],
             excludes: ["Peralatan Pribadi", "Obat Pribadi", "Pakaian Ganti", "Snack", "Jas Hujan", "Parkir Mobil", "Ojek Mepo - BC"]
